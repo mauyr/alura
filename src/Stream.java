@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Stream {
 
@@ -13,5 +14,11 @@ public class Stream {
 
         cursos.sort(Comparator.comparing(Curso::getAlunos));
         cursos.stream().filter(c -> c.getAlunos()>=50).map(Curso::getNome).forEach(System.out::println);
+
+        System.out.println(cursos.stream().filter(c -> c.getAlunos()>=50).findFirst().orElseGet(null).getNome());
+
+        System.out.println(cursos.stream().mapToLong(Curso::getAlunos).average().getAsDouble());
+
+        System.out.println(cursos.stream().filter(c -> c.getAlunos()>=50).collect(Collectors.toList()));
     }
 }
