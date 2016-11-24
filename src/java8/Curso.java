@@ -1,3 +1,5 @@
+package java8;
+
 public class Curso {
     private String nome;
     private int alunos;
