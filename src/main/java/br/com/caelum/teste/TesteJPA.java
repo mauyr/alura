@@ -1,14 +1,21 @@
 package br.com.caelum.teste;
 
 import br.com.caelum.financas.modelo.Conta;
+import br.com.caelum.financas.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class TesteJPA {
 
     public static void main(String[] args) {
+
+        insertConta();
+
+        insertConta();
+    }
+
+    private static void insertConta() {
+	double inicio = System.currentTimeMillis();
 
 	Conta conta = new Conta();
 	conta.setTitular("Maria dos Santos");
@@ -16,14 +23,15 @@ public class TesteJPA {
 	conta.setAgencia("043");
 	conta.setNumero("54321");
 
-	EntityManagerFactory emf = Persistence.createEntityManagerFactory("financas");
+	EntityManager manager = new JPAUtil().getEntityManager();
+	manager.getTransaction().begin();
 
-	EntityManager em = emf.createEntityManager();
-	em.getTransaction().begin();
+	manager.persist(conta);
 
-	em.persist(conta);
+	manager.getTransaction().commit();
+	manager.close();
 
-	em.getTransaction().commit();
-	em.close();
+	double fim = System.currentTimeMillis();
+	System.out.println("Executado em: " + (fim - inicio)/1000 + "s");
     }
 }
