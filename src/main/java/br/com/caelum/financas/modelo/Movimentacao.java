@@ -4,6 +4,13 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+@NamedQueries({
+        @NamedQuery(name="mediaDaContaPeloTipoMovimentacao",
+                query="select avg(m.valor) from Movimentacao m where m.conta=:pConta and m.tipoMovimentacao = :pTipo") ,
+        @NamedQuery(name="totalDeMovimentacoes",
+                query="select count(m) from Movimentacao m where m.conta = :pConta")
+})
+
 @Entity
 @SequenceGenerator(name = "SEQ_MOVIMENTACAO", sequenceName = "SEQ_MOVIMENTACAO", initialValue = 1)
 public class Movimentacao {
