@@ -16,6 +16,8 @@ public class TesteJPA {
 
         populaBanco();
 
+        buscaEAtualizaConta();
+
         double fim = System.currentTimeMillis();
         System.out.println("Executado em: " + (fim - inicio)/1000 + "s");
     }

@@ -1,10 +1,8 @@
 package br.com.caelum.financas.dao;
 
 import br.com.caelum.financas.modelo.Conta;
-import br.com.caelum.financas.util.JPAUtil;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
 
