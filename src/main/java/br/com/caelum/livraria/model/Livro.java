@@ -1,4 +1,4 @@
-package br.com.caelum.bean;
+package br.com.caelum.livraria.model;
 
 /**
  * Created by mauyr on 09/01/17.

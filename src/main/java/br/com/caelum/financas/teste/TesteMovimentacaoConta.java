@@ -1,4 +1,4 @@
-package br.com.caelum.teste;
+package br.com.caelum.financas.teste;
 
 import br.com.caelum.financas.modelo.Conta;
 import br.com.caelum.financas.util.JPAUtil;

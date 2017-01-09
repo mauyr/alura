@@ -1,4 +1,4 @@
-package br.com.caelum.teste;
+package br.com.caelum.financas.teste;
 
 import br.com.caelum.financas.dao.MovimentacaoDao;
 import br.com.caelum.financas.modelo.Conta;

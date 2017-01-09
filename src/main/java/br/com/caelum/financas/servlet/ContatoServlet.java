@@ -1,4 +1,4 @@
-package br.com.caelum.servlet;
+package br.com.caelum.financas.servlet;
 
 /**
  * Created by mauyr on 04/01/17.

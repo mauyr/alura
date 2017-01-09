@@ -1,6 +1,6 @@
-package br.com.caelum.controller;
+package br.com.caelum.livraria.bean;
 
-import br.com.caelum.bean.Livro;
+import br.com.caelum.livraria.model.Livro;
 
 import javax.faces.bean.ManagedBean;
 
