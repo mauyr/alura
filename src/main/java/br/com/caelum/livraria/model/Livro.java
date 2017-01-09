@@ -1,44 +1,77 @@
 package br.com.caelum.livraria.model;
 
-/**
- * Created by mauyr on 09/01/17.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
 public class Livro {
-    private String titulo;
-    private String isbn;
-    private double preco;
-    private String dataLancamento;
 
+	@Id
+	@GeneratedValue
+	private Integer id;
 
-    public String getTitulo() {
-        return titulo;
-    }
+	private String titulo;
+	private String isbn;
+	private double preco;
+	private String dataLancamento;
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+	@ManyToMany
+	private List<Autor> autores = new ArrayList<Autor>();
 
-    public String getIsbn() {
-        return isbn;
-    }
+	public List<Autor> getAutores() {
+		return autores;
+	}
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+	public void adicionaAutor(Autor autor) {
+		this.autores.add(autor);
+	}
 
-    public double getPreco() {
-        return preco;
-    }
+	public Livro() {
+	}
 
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public String getDataLancamento() {
-        return dataLancamento;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setDataLancamento(String dataLancamento) {
-        this.dataLancamento = dataLancamento;
-    }
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(double preco) {
+		this.preco = preco;
+	}
+
+	public String getDataLancamento() {
+		return dataLancamento;
+	}
+
+	public void setDataLancamento(String dataLancamento) {
+		this.dataLancamento = dataLancamento;
+	}
+
 }
