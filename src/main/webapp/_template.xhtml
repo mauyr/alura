@@ -15,6 +15,8 @@
     </div>
     <br />
     <div id="rodape">
+        <h:outputLabel rendered="#{not empty usuarioLogado}" value="#{usuarioLogado.email}"></h:outputLabel>
+        <br />
         <ui:insert name="rodape"></ui:insert> - copyright 2016
     </div>
 </h:body>
