@@ -32,6 +32,10 @@ public class LivroBean {
 		return livro;
 	}
 
+	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
 	public void gravar() {
 		System.out.println("Gravando livro " + this.livro.getTitulo());
 
@@ -40,13 +44,28 @@ public class LivroBean {
 			return;
 		}
 
-		new DAO<>(Livro.class).adiciona(this.livro);
+		if (this.livro.getId() == null) {
+			new DAO<>(Livro.class).adiciona(this.livro);
+		} else {
+			new DAO<>(Livro.class).atualiza(this.livro);
+		}
+
 		this.livro = new Livro();
 	}
 
 	public void gravarAutor() {
 		Autor autor = new DAO<>(Autor.class).buscaPorId(this.autorId);
 		this.livro.adicionaAutor(autor);
+	}
+
+	public void remover(Livro livro) {
+		System.out.println("Removendo livro " + livro.getTitulo());
+		new DAO<>(Livro.class).remove(livro);
+	}
+
+	public void removerAutorDoLivro(Autor autor) {
+		System.out.println("Removendo auto do livro " + autor.getNome());
+		this.livro.removeAutor(autor);
 	}
 
 	public List<Livro> getLivros() {
