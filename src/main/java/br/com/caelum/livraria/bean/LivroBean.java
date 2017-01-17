@@ -18,6 +18,8 @@ public class LivroBean {
 
 	private Livro livro = new Livro();
 
+	private Integer livroId;
+
 	private Integer autorId;
 
 	public List<Autor> getAutores() {
@@ -34,6 +36,10 @@ public class LivroBean {
 
 	public void setLivro(Livro livro) {
 		this.livro = livro;
+	}
+
+	public void carregarLivroPelaId() {
+		this.livro = new DAO<>(Livro.class).buscaPorId(livroId);
 	}
 
 	public void gravar() {
@@ -85,5 +91,13 @@ public class LivroBean {
 		if (!valor.startsWith("1")) {
 			throw new ValidatorException(new FacesMessage("Deveria começar com 1"));
 		}
+	}
+
+	public Integer getLivroId() {
+		return livroId;
+	}
+
+	public void setLivroId(Integer livroId) {
+		this.livroId = livroId;
 	}
 }
