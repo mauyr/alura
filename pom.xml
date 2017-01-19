@@ -161,5 +161,11 @@
             <version>6.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.primefaces.extensions</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
     </dependencies>
 </project>

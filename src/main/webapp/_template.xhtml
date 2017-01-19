@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
@@ -7,7 +8,17 @@
 
 <h:body>
     <div id="cabecalho">
-        <h:graphicImage library="img" name="logo.png" height="150"/>
+        <h:panelGrid columns="2">
+            <h:graphicImage library="img" name="logo.png" height="150"/>
+
+            <h:form>
+                <p:themeSwitcher id="basic" style="width:165px" value="#{temaBean.tema}">
+                    <f:selectItem itemLabel="Choose Theme" itemValue="" />
+                    <f:selectItems value="#{temaBean.temas}" var="tema" itemLabel="#{tema}" itemValue="#{tema}" />
+                    <f:ajax />
+                </p:themeSwitcher>
+            </h:form>
+        </h:panelGrid>
 
         <p:growl id="messages" showDetail="true" autoUpdate="true" />
 
@@ -16,6 +27,7 @@
                 <p:menuButton value="Menu">
                     <p:menuitem value="Livros" action="livro?faces-redirect=true" icon="fa fa-fw fa-book" update="@form"/>
                     <p:menuitem value="Autores" action="autor?faces-redirect=true" icon="fa fa-fw fa-user"/>
+                    <p:menuitem value="Vendas" action="vendas?faces-redirect=true" icon="fa fa-fw fa-bar-chart"/>
                     <p:separator/>
                     <p:menuitem value="Logout" action="#{loginBean.deslogar}" icon="fa fa-fw fa-sign-out"/>
                 </p:menuButton>
