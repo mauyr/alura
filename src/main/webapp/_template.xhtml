@@ -1,5 +1,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head/>
@@ -7,11 +8,19 @@
 <h:body>
     <div id="cabecalho">
         <h:graphicImage library="img" name="logo.png" height="150"/>
-        <h1><ui:insert name="titulo" /></h1>
 
-        <h:form rendered="#{usuarioLogado != null}">
-            <h:commandLink value="Logout" action="#{loginBean.deslogar}" />
-        </h:form>
+        <p:growl id="messages" showDetail="true" autoUpdate="true" />
+
+            <h:form rendered="#{usuarioLogado != null}">
+
+                <p:menuButton value="Menu">
+                    <p:menuitem value="Livros" action="livro?faces-redirect=true" icon="fa fa-fw fa-book" update="@form"/>
+                    <p:menuitem value="Autores" action="autor?faces-redirect=true" icon="fa fa-fw fa-user"/>
+                    <p:separator/>
+                    <p:menuitem value="Logout" action="#{loginBean.deslogar}" icon="fa fa-fw fa-sign-out"/>
+                </p:menuButton>
+            </h:form>
+        <h1><ui:insert name="titulo" /></h1>
     </div>
     <div id="conteudo">
         <ui:insert name="conteudo" />
