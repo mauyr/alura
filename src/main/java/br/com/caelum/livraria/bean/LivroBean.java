@@ -11,6 +11,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
 import java.util.List;
+import java.util.Locale;
 
 @ManagedBean
 @ViewScoped
@@ -21,6 +22,8 @@ public class LivroBean {
 	private Integer livroId;
 
 	private Integer autorId;
+
+	private List<Livro> livros;
 
 	public List<Autor> getAutores() {
 		return new DAO<>(Autor.class).listaTodos();
@@ -50,11 +53,14 @@ public class LivroBean {
 			return;
 		}
 
-		if (this.livro.getId() == null) {
-			new DAO<>(Livro.class).adiciona(this.livro);
+		DAO<Livro> dao = new DAO<>(Livro.class);
+
+		if(this.livro.getId() == null) {
+			dao.adiciona(this.livro);
 		} else {
-			new DAO<>(Livro.class).atualiza(this.livro);
+			dao.atualiza(this.livro);
 		}
+		this.livros = dao.listaTodos();
 
 		this.livro = new Livro();
 	}
@@ -75,7 +81,13 @@ public class LivroBean {
 	}
 
 	public List<Livro> getLivros() {
-		return new DAO<>(Livro.class).listaTodos();
+		DAO<Livro> dao = new DAO<>(Livro.class);
+
+		if(this.livros == null) {
+			this.livros = dao.listaTodos();
+		}
+
+		return livros;
 	}
 
 	public Integer getAutorId() {
@@ -90,6 +102,38 @@ public class LivroBean {
 		String valor = value.toString();
 		if (!valor.startsWith("1")) {
 			throw new ValidatorException(new FacesMessage("Deveria começar com 1"));
+		}
+	}
+
+	public boolean precoEhMenor(Object valorColuna, Object filtroDigitado, Locale locale) { // java.util.Locale
+
+		//tirando espaços do filtro
+		String textoDigitado = (filtroDigitado == null) ? null : filtroDigitado.toString().trim();
+
+		System.out.println("Filtrando pelo " + textoDigitado + ", Valor do elemento: " + valorColuna);
+
+		// o filtro é nulo ou vazio?
+		if (textoDigitado == null || textoDigitado.equals("")) {
+			return true;
+		}
+
+		// elemento da tabela é nulo?
+		if (valorColuna == null) {
+			return false;
+		}
+
+		try {
+			// fazendo o parsing do filtro para converter para Double
+			Double precoDigitado = Double.valueOf(textoDigitado);
+			Double precoColuna = (Double) valorColuna;
+
+			// comparando os valores, compareTo devolve um valor negativo se o value é menor do que o filtro
+			return precoColuna.compareTo(precoDigitado) < 0;
+
+		} catch (NumberFormatException e) {
+
+			// usuario nao digitou um numero
+			return false;
 		}
 	}
 

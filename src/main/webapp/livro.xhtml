@@ -80,42 +80,35 @@
             </h:form>
 
             <h:form id="listaLivros">
-                <h:dataTable id="tabelaLivros" value="#{livroBean.livros}" var="livro">
-
-                    <h:column>
-                        <f:facet name="header">Título</f:facet>
-                        <h:outputText value="#{livro.titulo}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">ISBN</f:facet>
-                        <h:outputText value="#{livro.isbn}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">Preço</f:facet>
-                        <h:outputText value="#{livro.preco}"/>
-                    </h:column>
-
-                    <h:column>
-                        <f:facet name="header">Data</f:facet>
-                        <h:outputText value="#{livro.dataLancamento.time}">
-                            <f:convertDateTime pattern="dd/MM/yyyy HH:mm"/>
+                <p:dataTable value="#{livroBean.livros}" var="livro" id="tabelaLivros" paginator="true" rows="5">
+                    <f:facet name="header">Livros</f:facet>
+                    <p:column headerText="Título" sortBy="#{livro.titulo}" filterBy="#{livro.titulo}" filterMatchMode="contains">
+                        <h:outputText value="#{livro.titulo}" />
+                    </p:column>
+                    <p:column headerText="ISBN" sortBy="#{livro.isbn}" filterBy="#{livro.isbn}" filterMatchMode="startsWith">
+                        <h:outputText value="#{livro.isbn}" />
+                    </p:column>
+                    <p:column headerText="Preço" sortBy="#{livro.preco}" filterBy="#{livro.preco}" filterFunction="#{livroBean.precoEhMenor}">
+                        <h:outputText value="#{livro.preco}">
+                            <f:convertNumber type="currency" pattern="R$ #0.00"
+                                             currencySymbol="R$" locale="pt_BR" />
                         </h:outputText>
-                    </h:column>
+                    </p:column>
+                    <p:column headerText="Data" sortBy="#{livro.dataLancamento.time}" filterBy="#{livro.dataLancamento.time}" filterMatchMode="contains">
+                        <h:outputText value="#{livro.dataLancamento.time}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"
+                                               timeZone="America/Sao_Paulo" />
+                        </h:outputText>
+                    </p:column>
 
-                    <h:column>
-                        <f:facet name="header">Alterar</f:facet>
-                        <h:commandLink value="altera">
-                            <f:setPropertyActionListener target="#{livroBean.livro}" value="#{livro}" />
-                        </h:commandLink>
-                    </h:column>
+                    <p:column headerText="Alterar">
+                        <h:commandLink value="altera" action="#{livroBean.carregar(livro)}"/>
+                    </p:column>
 
-                    <h:column>
-                        <f:facet name="header">Remover</f:facet>
-                        <h:commandLink value="Remover" action="#{livroBean.remover(livro)}"/>
-                    </h:column>
-                </h:dataTable>
+                    <p:column headerText="Remover">
+                        <h:commandLink value="remove" action="#{livroBean.remover(livro)}"/>
+                    </p:column>
+                </p:dataTable>
             </h:form>
         </ui:define>
         <ui:define name="rodape">
