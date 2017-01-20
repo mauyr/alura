@@ -3,6 +3,7 @@ package br.com.caelum.livraria.bean;
 import br.com.caelum.livraria.dao.AutorDao;
 import br.com.caelum.livraria.dao.DAO;
 import br.com.caelum.livraria.model.Autor;
+import br.com.caelum.livraria.tx.Transactional;
 import br.com.caelum.livraria.util.RedirectView;
 
 import javax.faces.view.ViewScoped;
@@ -38,6 +39,7 @@ public class AutorBean implements Serializable {
         return autor;
     }
 
+    @Transactional
     public RedirectView gravar() {
         System.out.println("Gravando autor " + this.autor.getNome());
 
@@ -55,6 +57,7 @@ public class AutorBean implements Serializable {
         this.autor = autor;
     }
 
+    @Transactional
     public void remover(Autor autor) {
         System.out.println("Removendo autor" + autor.getNome());
        this.dao.remove(autor);

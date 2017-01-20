@@ -1,5 +1,6 @@
 package br.com.caelum.livraria.dao;
 
+import br.com.caelum.livraria.log.LogTime;
 import br.com.caelum.livraria.model.Autor;
 
 import javax.annotation.PostConstruct;
@@ -39,6 +40,7 @@ public class AutorDao implements Serializable {
         this.dao.remove(autor);
     }
 
+    @LogTime
     public List<Autor> listaTodos() {
         return this.dao.listaTodos();
     }
