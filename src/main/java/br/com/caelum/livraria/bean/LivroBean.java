@@ -5,17 +5,18 @@ import br.com.caelum.livraria.model.Autor;
 import br.com.caelum.livraria.model.Livro;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.validator.ValidatorException;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class LivroBean {
+public class LivroBean implements Serializable {
 
 	private Livro livro = new Livro();
 
@@ -38,6 +39,11 @@ public class LivroBean {
 	}
 
 	public void setLivro(Livro livro) {
+		this.livro = livro;
+	}
+
+	public void carregar(Livro livro) {
+		System.out.println("Carregando autor" + livro.getTitulo());
 		this.livro = livro;
 	}
 
@@ -72,7 +78,10 @@ public class LivroBean {
 
 	public void remover(Livro livro) {
 		System.out.println("Removendo livro " + livro.getTitulo());
-		new DAO<>(Livro.class).remove(livro);
+		DAO<Livro> livroDAO = new DAO<>(Livro.class);
+		livroDAO.remove(livro);
+
+		this.livros = livroDAO.listaTodos();
 	}
 
 	public void removerAutorDoLivro(Autor autor) {

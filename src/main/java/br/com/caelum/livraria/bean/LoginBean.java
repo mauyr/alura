@@ -1,20 +1,17 @@
 package br.com.caelum.livraria.bean;
 
-import br.com.caelum.livraria.dao.DAO;
 import br.com.caelum.livraria.dao.UsuarioDao;
-import br.com.caelum.livraria.model.Autor;
 import br.com.caelum.livraria.model.Usuario;
-import br.com.caelum.livraria.util.RedirectView;
 
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
 import javax.faces.context.FacesContext;
-import java.util.List;
+import javax.inject.Named;
+import java.io.Serializable;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class LoginBean {
+public class LoginBean implements Serializable {
 
     private Usuario usuario = new Usuario();
 

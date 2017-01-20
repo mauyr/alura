@@ -4,6 +4,7 @@
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
+          <deploymentDescriptor name="jetty-web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/jetty-web.xml" />
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
@@ -33,6 +34,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.jboss.weld.servlet:weld-servlet:2.4.1.Final" level="project" />
     <orderEntry type="library" name="Maven: org.jacoco:jacoco-maven-plugin:0.7.8" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-plugin-api:2.2.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven:maven-project:2.2.1" level="project" />
@@ -95,6 +97,9 @@
     <orderEntry type="library" name="Maven: javax.annotation:jsr250-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: javax.inject:javax.inject:1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.2.4.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator-cdi:5.1.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-validator:5.1.1.Final" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.postgresql:postgresql:9.3-1100-jdbc41" level="project" />
     <orderEntry type="library" name="Maven: br.com.caelum.stella:caelum-stella-core:2.1.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
@@ -103,6 +108,7 @@
     <orderEntry type="library" name="Maven: org.primefaces:primefaces:6.0" level="project" />
     <orderEntry type="library" name="Maven: javax.faces:jsf-api:2.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.faces:jsf-impl:2.2.14" level="project" />
+    <orderEntry type="library" name="Maven: org.primefaces.themes:start:1.0.10" level="project" />
     <orderEntry type="library" name="Maven: org.primefaces.extensions:all-themes:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:afterdark:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:afternoon:1.0.8" level="project" />
@@ -132,7 +138,6 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:sam:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:smoothness:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:south-street:1.0.8" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:start:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:sunny:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:swanky-purse:1.0.8" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.primefaces.themes:trontastic:1.0.8" level="project" />

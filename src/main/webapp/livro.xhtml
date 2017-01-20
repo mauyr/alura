@@ -21,7 +21,7 @@
         </ui:define>
 
         <ui:define name="conteudo">
-            <h:form>
+            <h:form id="edicaoLivro">
                 <p:fieldset legend="Dados do Livro">
                     <h:panelGrid columns="2">
 
@@ -100,12 +100,12 @@
                         </h:outputText>
                     </p:column>
 
-                    <p:column headerText="Alterar">
-                        <h:commandLink value="altera" action="#{livroBean.carregar(livro)}"/>
+                    <p:column headerText="">
+                        <p:commandButton value="Edit" icon="fa fa-fw fa-edit" action="#{livroBean.carregar(livro)}" update=":edicaoLivro" />
                     </p:column>
 
-                    <p:column headerText="Remover">
-                        <h:commandLink value="remove" action="#{livroBean.remover(livro)}"/>
+                    <p:column headerText="">
+                        <p:commandButton value="Remove" icon="fa fa-fw fa-remove" action="#{livroBean.remover(livro)}" update="@form" />
                     </p:column>
                 </p:dataTable>
             </h:form>

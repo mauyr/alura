@@ -6,8 +6,9 @@ import br.com.caelum.livraria.model.Venda;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -15,9 +16,9 @@ import java.util.Random;
 /**
  * Created by mauyr on 19/01/17.
  */
-@ManagedBean
+@Named
 @ViewScoped
-public class VendasBean {
+public class VendasBean implements Serializable {
 
     public BarChartModel getVendasModel() {
 

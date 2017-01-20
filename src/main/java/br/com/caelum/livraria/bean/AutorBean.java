@@ -4,13 +4,14 @@ import br.com.caelum.livraria.dao.DAO;
 import br.com.caelum.livraria.model.Autor;
 import br.com.caelum.livraria.util.RedirectView;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.view.ViewScoped;
+import javax.inject.Named;
+import java.io.Serializable;
 import java.util.List;
 
-@ManagedBean
+@Named
 @ViewScoped
-public class AutorBean {
+public class AutorBean implements Serializable {
 
     private Autor autor = new Autor();
 

@@ -1,14 +1,15 @@
 package br.com.caelum.livraria.bean;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Named;
+import java.io.Serializable;
 
 /**
  * Created by mauyr on 19/01/17.
  */
-@ManagedBean
+@Named
 @SessionScoped
-public class TemaBean {
+public class TemaBean implements Serializable {
 
     private String tema = "bootstrap";
 

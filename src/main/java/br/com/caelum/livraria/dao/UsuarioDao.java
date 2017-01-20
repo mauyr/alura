@@ -24,6 +24,7 @@ public class UsuarioDao {
 
         try {
             Usuario resultado = query.getSingleResult();
+            resultado.getId();
         } catch (NoResultException ex) {
             return false;
         } finally {
