@@ -5,11 +5,12 @@ import br.com.caelum.livraria.model.Usuario;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
+import java.io.Serializable;
 
 /**
  * Created by mauyr on 17/01/17.
  */
-public class UsuarioDao {
+public class UsuarioDao implements Serializable {
 
     public boolean existe(Usuario usuario) {
 

@@ -1,12 +1,14 @@
 package br.com.caelum.livraria.bean;
 
 import br.com.caelum.livraria.dao.DAO;
+import br.com.caelum.livraria.dao.LivroDao;
 import br.com.caelum.livraria.model.Livro;
 import br.com.caelum.livraria.model.Venda;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
 
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -19,6 +21,9 @@ import java.util.Random;
 @Named
 @ViewScoped
 public class VendasBean implements Serializable {
+
+    @Inject
+    LivroDao livroDao;
 
     public BarChartModel getVendasModel() {
 
@@ -53,7 +58,7 @@ public class VendasBean implements Serializable {
 
     public List<Venda> getVendas(long seed) {
 
-        List<Livro> livros = new DAO<Livro>(Livro.class).listaTodos();
+        List<Livro> livros = livroDao.listaTodos();
         List<Venda> vendas = new ArrayList<Venda>();
 
         Random random = new Random(seed);
