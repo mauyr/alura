@@ -15,11 +15,16 @@ public class TempoDeExecucaoInterceptor implements Serializable {
 
     @AroundInvoke
     public Object analisaTempo(InvocationContext context) throws Exception {
-        System.out.println("[Inicio] " + context.getMethod().getDeclaringClass().getName() + "." + context.getMethod().getName() + " >> " + new Date());
+
+        long inicio = System.currentTimeMillis();
 
         Object object = context.proceed();
 
-        System.out.println("[Fim] " + context.getMethod().getDeclaringClass().getName() + "." + context.getMethod().getName() + " >> " + new Date());
+        long fim = System.currentTimeMillis();
+
+        long tempoDeExecucao = fim - inicio;
+
+        System.out.println(context.getMethod().getDeclaringClass().getName() + "." + context.getMethod().getName() + " >> " + tempoDeExecucao);
 
         return object;
     }
