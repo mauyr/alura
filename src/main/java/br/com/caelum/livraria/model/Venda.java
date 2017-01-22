@@ -1,17 +1,28 @@
 package br.com.caelum.livraria.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.io.Serializable;
+
 /**
  * Created by mauyr on 19/01/17.
  */
-public class Venda {
+@Entity
+public class Venda implements Serializable {
 
+    @Id @GeneratedValue
+    private Integer id;
 
+    private Integer ano;
+
+    @ManyToOne
     private Livro livro;
+
     private Integer quantidade;
 
-    public Venda(Livro livro, Integer quantidade) {
-        this.livro = livro;
-        this.quantidade = quantidade;
+    public Venda() {
     }
 
     public Livro getLivro() {
@@ -30,4 +41,19 @@ public class Venda {
         this.quantidade = quantidade;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getAno() {
+        return ano;
+    }
+
+    public void setAno(Integer ano) {
+        this.ano = ano;
+    }
 }
