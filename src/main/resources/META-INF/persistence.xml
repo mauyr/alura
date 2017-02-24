@@ -40,6 +40,7 @@
         <class>br.com.caelum.livraria.model.Autor</class>
         <class>br.com.caelum.livraria.model.Livro</class>
         <class>br.com.caelum.livraria.model.Usuario</class>
+        <class>br.com.caelum.livraria.model.Venda</class>
 
         <properties>
             <!-- Propriedades JDBC -->

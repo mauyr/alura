@@ -2,6 +2,7 @@ package br.com.caelum.livraria.dao;
 
 import br.com.caelum.livraria.model.Usuario;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
@@ -12,9 +13,11 @@ import java.io.Serializable;
  */
 public class UsuarioDao implements Serializable {
 
+    @Inject
+    EntityManager em;
+
     public boolean existe(Usuario usuario) {
 
-        EntityManager em = new JPAUtil().getEntityManager();
         TypedQuery<Usuario> query = em
                 .createQuery(
                         "select u from Usuario u where u.email = :pEmail and u.senha = :pSenha",
@@ -28,8 +31,6 @@ public class UsuarioDao implements Serializable {
             resultado.getId();
         } catch (NoResultException ex) {
             return false;
-        } finally {
-            em.close();
         }
 
         return true;
