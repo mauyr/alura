@@ -1,13 +1,13 @@
 package br.com.caelum.financas.teste;
 
 import br.com.caelum.financas.modelo.Orcamento;
-import br.com.caelum.financas.service.impostos.ICCC;
-import br.com.caelum.financas.service.impostos.ICMS;
-import br.com.caelum.financas.service.impostos.ISS;
-import br.com.caelum.financas.service.impostos.Imposto;
-import br.com.caelum.financas.service.investimentos.Arrojado;
-import br.com.caelum.financas.service.investimentos.Conservador;
-import br.com.caelum.financas.service.investimentos.Moderado;
+import br.com.caelum.financas.components.impostos.ICCC;
+import br.com.caelum.financas.components.impostos.ICMS;
+import br.com.caelum.financas.components.impostos.ISS;
+import br.com.caelum.financas.components.impostos.Imposto;
+import br.com.caelum.financas.components.investimentos.Arrojado;
+import br.com.caelum.financas.components.investimentos.Conservador;
+import br.com.caelum.financas.components.investimentos.Moderado;
 import br.com.caelum.financas.util.CalculadorDeImpostos;
 import br.com.caelum.financas.util.RealizadorDeInvestimentos;
 

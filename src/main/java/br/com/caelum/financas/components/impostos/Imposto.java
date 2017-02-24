@@ -1,4 +1,4 @@
-package br.com.caelum.financas.service.impostos;
+package br.com.caelum.financas.components.impostos;
 
 /**
  * Created by mauyr on 24/02/17.

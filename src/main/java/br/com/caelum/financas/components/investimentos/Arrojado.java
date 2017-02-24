@@ -1,4 +1,4 @@
-package br.com.caelum.financas.service.investimentos;
+package br.com.caelum.financas.components.investimentos;
 
 /**
  * Created by mauyr on 24/02/17.

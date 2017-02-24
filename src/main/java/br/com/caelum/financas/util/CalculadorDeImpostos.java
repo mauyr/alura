@@ -1,7 +1,7 @@
 package br.com.caelum.financas.util;
 
 import br.com.caelum.financas.modelo.Orcamento;
-import br.com.caelum.financas.service.impostos.Imposto;
+import br.com.caelum.financas.components.impostos.Imposto;
 
 /**
  * Created by mauyr on 24/02/17.

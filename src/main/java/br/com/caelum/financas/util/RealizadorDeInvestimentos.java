@@ -1,7 +1,7 @@
 package br.com.caelum.financas.util;
 
-import br.com.caelum.financas.service.impostos.IR;
-import br.com.caelum.financas.service.investimentos.Investimento;
+import br.com.caelum.financas.components.impostos.IR;
+import br.com.caelum.financas.components.investimentos.Investimento;
 
 /**
  * Created by mauyr on 24/02/17.
