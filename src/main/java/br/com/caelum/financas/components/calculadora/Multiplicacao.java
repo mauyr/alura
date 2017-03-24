@@ -10,14 +10,34 @@ public class Multiplicacao
     private Expressao direita;
 
     public Multiplicacao(Expressao esquerda, Expressao direita) {
-	this.esquerda = esquerda;
-	this.direita = direita;
+	this.setEsquerda(esquerda);
+	this.setDireita(direita);
     }
 
     @Override public int avalia() {
-        int expressaoEsquerda = esquerda.avalia();
-        int expressaoDireira = direita.avalia();
+        int expressaoEsquerda = getEsquerda().avalia();
+        int expressaoDireira = getDireita().avalia();
 
 	return expressaoEsquerda * expressaoDireira;
+    }
+
+    @Override public void aceita(Visitor visitor) {
+	visitor.visitaMultiplicacao(this);
+    }
+
+    public Expressao getEsquerda() {
+	return esquerda;
+    }
+
+    public void setEsquerda(Expressao esquerda) {
+	this.esquerda = esquerda;
+    }
+
+    public Expressao getDireita() {
+	return direita;
+    }
+
+    public void setDireita(Expressao direita) {
+	this.direita = direita;
     }
 }

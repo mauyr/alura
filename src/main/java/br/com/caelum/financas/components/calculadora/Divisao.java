@@ -10,13 +10,33 @@ public class Divisao
     private Expressao direita;
 
     public Divisao(Expressao esquerda, Expressao direita) {
-	this.esquerda = esquerda;
-	this.direita = direita;
+	this.setEsquerda(esquerda);
+	this.setDireita(direita);
     }
 
     @Override public int avalia() {
-        int expressaoEsquerda = esquerda.avalia();
-        int expressaoDireita = direita.avalia();
+        int expressaoEsquerda = getEsquerda().avalia();
+        int expressaoDireita = getDireita().avalia();
 	return expressaoEsquerda / expressaoDireita;
+    }
+
+    @Override public void aceita(Visitor visitor) {
+	visitor.visitaDivisao(this);
+    }
+
+    public Expressao getEsquerda() {
+	return esquerda;
+    }
+
+    public void setEsquerda(Expressao esquerda) {
+	this.esquerda = esquerda;
+    }
+
+    public Expressao getDireita() {
+	return direita;
+    }
+
+    public void setDireita(Expressao direita) {
+	this.direita = direita;
     }
 }
